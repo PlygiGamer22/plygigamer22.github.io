@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El banquete de las bestias</title>
+	<link rel="stylesheet" href="css/inicio.css">
+	<style>
+		#loader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: #fff7ed;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+			transition: opacity 0.5s;
+		}
+		.spinner {
+			border: 8px solid #ffe0b2;
+			border-top: 8px solid #ff9800;
+			border-radius: 50%;
+			width: 60px;
+			height: 60px;
+			animation: spin 1s linear infinite;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			font-size: 2rem;
+		}
+		.paw {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+		}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+<body>
+	<div id="loader">
+	<div class="spinner"><span class="paw">🐾</span></div>
+	</div>
+	<header>
+	<h1>🐾 Bienvenido a El banquete de las bestias</h1>
+	<p>Tu sitio moderno y responsive para amantes de los animales</p>
+	</header>
+	<nav>
+	<a href="index.html">🏠 Inicio</a>
+	<a href="carga.html">📤 Carga</a>
+	<a href="opciones.html">⚙️ Opciones</a>
+	</nav>
+	<main>
+		<h2>¡Hola!</h2>
+		<p>Esta es la página de inicio de tu sitio web. El diseño es completamente responsive y se adapta a cualquier dispositivo.</p>
+		<p>Puedes personalizar el contenido y los estilos según tus necesidades.</p>
+	</main>
+</body>
+<script>
+	window.addEventListener('load', function() {
+		var loader = document.getElementById('loader');
+		setTimeout(function() {
+			loader.style.opacity = '0';
+			setTimeout(function() {
+				loader.style.display = 'none';
+			}, 500);
+		}, 2000);
+	});
+</script>
+</html>
