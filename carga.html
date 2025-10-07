@@ -13,14 +13,24 @@
     <h1>🐾 Carga | El banquete de las bestias</h1>
         <p>Sube información o fotos de tus mascotas</p>
     </header>
-    <nav>
-        <a href="index.html">🏠 Inicio</a>
-        <a href="carga.html">📤 Carga</a>
-        <a href="opciones.html">⚙️ Opciones</a>
-    </nav>
+    <!-- Sustituye el nav estático por el contenedor del menú interactivo -->
+    <nav id="menu-interactivo"></nav>
     <main>
         <h2>Sección de Carga</h2>
         <p>Aquí podrás cargar datos o imágenes de tus mascotas.</p>
+        <!-- Indicador de carga tipo batería dividido en 3 fases -->
+        <section id="indicador-carga" style="display:flex; flex-direction:column; align-items:center; margin:2em 0;">
+            <div style="width:120px; height:40px; border:2px solid #333; border-radius:8px; display:flex; overflow:hidden; background:#eee; position:relative;">
+                <div class="fase-carga" style="flex:1; background:#ff9800; opacity:0.3;" data-fase="1"></div>
+                <div class="fase-carga" style="flex:1; background:#ff9800; opacity:0.3;" data-fase="2"></div>
+                <div class="fase-carga" style="flex:1; background:#ff9800; opacity:0.3;" data-fase="3"></div>
+                <div style="width:10px; height:20px; background:#333; position:absolute; right:-12px; top:10px; border-radius:2px;"></div>
+            </div>
+            <div style="margin-top:0.5em; font-size:1.1em;">
+                <span id="texto-carga">Fase 1 de 3</span>
+            </div>
+        </section>
+        <!-- Fin indicador de carga -->
     </main>
 </body>
 </html>
