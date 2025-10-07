@@ -44,6 +44,9 @@
 			100% { transform: rotate(360deg); }
 		}
 	</style>
+	<script src="js/loader.js" defer></script>
+	<script src="js/animacionesInicio.js" defer></script>
+	<script src="js/menuInteractivo.js" defer></script>
 </head>
 <body>
 	<div id="loader">
@@ -60,20 +63,8 @@
 	</nav>
 	<main>
 		<h2>¡Hola!</h2>
-		<p>Lorem imsup.</p>
-		<p>Pan.</p>
+		<p>Esta es la página de inicio de tu sitio web. El diseño es completamente responsive y se adapta a cualquier dispositivo.</p>
+		<p>Puedes personalizar el contenido y los estilos según tus necesidades.</p>
 	</main>
 </body>
-<script>
-	window.addEventListener('load', function() {
-		var loader = document.getElementById('loader');
-		setTimeout(function() {
-			loader.style.opacity = '0';
-			setTimeout(function() {
-				loader.style.display = 'none';
-			}, 500);
-		}, 2000);
-	});
-</script>
 </html>
-

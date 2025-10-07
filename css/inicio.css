@@ -1,41 +1,56 @@
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	background: #fff7ed;
+	background-color: #fff7ed; /* Fondo amarillo claro */
+	color: #333; /* Texto oscuro para contraste */
 }
 header {
-	background: #ff9800;
-	color: #fff;
-	padding: 1.5rem 1rem;
+	background-color: #ff9800; /* Naranja */
+	color: #fff; /* Texto blanco */
+	padding: 20px;
 	text-align: center;
 }
 nav {
+	background-color: #ffe0b2; /* Amarillo pastel */
+	padding: 10px;
 	display: flex;
 	justify-content: center;
-	gap: 1.5rem;
-	background: #fff;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-	padding: 1rem 0;
+	gap: 15px;
 }
 nav a {
-	color: #ff9800;
 	text-decoration: none;
-	font-weight: bold;
-	transition: color 0.2s;
+	color: #333; /* Texto oscuro */
+	padding: 10px 15px;
+	border-radius: 5px;
+	transition: background-color 0.3s, color 0.3s;
 }
 nav a:hover {
-	color: #e65100;
+	background-color: #ff9800; /* Naranja */
+	color: #fff; /* Texto blanco */
+}
+nav a.active {
+	background-color: #ff9800; /* Naranja */
+	color: #fff; /* Texto blanco */
 }
 main {
 	max-width: 900px;
 	margin: 2rem auto;
 	background: #fff;
-	padding: 2rem;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+	padding: 20px;
+	background-color: #fff7ed; /* Fondo amarillo claro */
+	border: 3px solid #ffc107; /* Borde amarillo más vibrante */
+	border-radius: 10px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más grande y oscura */
 }
 h1 {
 	margin-top: 0;
+}
+footer {
+	background-color: #ff9800; /* Naranja */
+	color: #fff; /* Texto blanco */
+	text-align: center;
+	padding: 10px;
+	margin-top: 20px;
 }
 @media (max-width: 600px) {
 	nav {
