@@ -51,6 +51,7 @@
 			font-family: Arial, sans-serif;
 			margin: 0;
 			background-color: #fff7ed;
+			overflow-x: hidden;
 		}
 
 		header {
@@ -60,53 +61,71 @@
 			text-align: center;
 		}
 
-		/* === MENÚ PLEGABLE === */
+		main {
+			padding: 1rem;
+		}
+
+		/* === MENÚ DESLIZANTE (derecha a izquierda) === */
+		.menu-toggle {
+			position: fixed;
+			top: 1rem;
+			right: 1rem;
+			background: #ff9800;
+			border: none;
+			color: white;
+			font-size: 2rem;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+			border-radius: 0.5rem;
+			z-index: 1001;
+		}
+
 		nav {
+			position: fixed;
+			top: 0;
+			right: -250px; /* Oculto por defecto */
+			width: 250px;
+			height: 100vh;
 			background-color: #ffe0b2;
-			overflow: hidden;
-			transition: max-height 0.3s ease-out;
+			box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+			display: flex;
+			flex-direction: column;
+			padding-top: 4rem;
+			transition: right 0.4s ease;
+			z-index: 1000;
+		}
+
+		nav.open {
+			right: 0; /* Se muestra */
 		}
 
 		nav a {
-			display: block;
 			color: #333;
 			text-decoration: none;
 			padding: 1rem;
 			border-bottom: 1px solid #ffcc80;
+			font-size: 1.1rem;
+			transition: background 0.3s;
 		}
 
 		nav a:hover {
 			background-color: #ffcc80;
 		}
 
-		/* Botón hamburguesa */
-		.menu-toggle {
-			background: #ff9800;
-			border: none;
-			color: white;
-			font-size: 1.8rem;
-			padding: 0.5rem 1rem;
-			cursor: pointer;
+		/* === FONDO OSCURO CUANDO EL MENÚ ESTÁ ABIERTO === */
+		.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0, 0, 0, 0.4);
 			display: none;
-			width: 100%;
-			text-align: left;
+			z-index: 999;
 		}
 
-		/* Para móviles */
-		@media (max-width: 768px) {
-			nav {
-				max-height: 0;
-			}
-			nav.open {
-				max-height: 300px; /* altura suficiente para mostrar los enlaces */
-			}
-			.menu-toggle {
-				display: block;
-			}
-		}
-
-		main {
-			padding: 1rem;
+		.overlay.active {
+			display: block;
 		}
 	</style>
 
@@ -114,8 +133,16 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			const toggleBtn = document.querySelector(".menu-toggle");
 			const nav = document.querySelector("nav");
+			const overlay = document.querySelector(".overlay");
+
 			toggleBtn.addEventListener("click", () => {
 				nav.classList.toggle("open");
+				overlay.classList.toggle("active");
+			});
+
+			overlay.addEventListener("click", () => {
+				nav.classList.remove("open");
+				overlay.classList.remove("active");
 			});
 		});
 	</script>
@@ -135,9 +162,12 @@
 	</header>
 
 	<!-- Botón hamburguesa -->
-	<button class="menu-toggle">☰ Menú</button>
+	<button class="menu-toggle">☰</button>
 
-	<!-- Menú plegable -->
+	<!-- Fondo oscuro -->
+	<div class="overlay"></div>
+
+	<!-- Menú lateral -->
 	<nav>
 		<a href="index.html">🏠 Inicio</a>
 		<a href="carga.html">📤 Carga</a>
