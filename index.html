@@ -1,181 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>El banquete de las bestias</title>
-	<link rel="stylesheet" href="css/inicio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El banquete de las bestias</title>
+  <link rel="stylesheet" href="css/inicio.css">
 
-	<style>
-
-		#loader {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background: #fff7ed;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			z-index: 9999;
-			transition: opacity 0.5s;
-		}
-		.spinner {
-			border: 8px solid #ffe0b2;
-			border-top: 8px solid #ff9800;
-			border-radius: 50%;
-			width: 60px;
-			height: 60px;
-			animation: spin 1s linear infinite;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-			font-size: 2rem;
-		}
-		.paw {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			pointer-events: none;
-		}
-		@keyframes spin {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-		}
-
-
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			background-color: #fff7ed;
-			overflow-x: hidden;
-		}
-
-		header {
-			background-color: #ff9800;
-			color: white;
-			padding: 1rem;
-			text-align: center;
-		}
-
-		main {
-			padding: 1rem;
-		}
-
-
-		.menu-toggle {
-			position: fixed;
-			top: 40rem;
-			right: 1rem;
-			background: #ff9800;
-			border: none;
-			color: white;
-			font-size: 2rem;
-			padding: 0.5rem 1rem;
-			cursor: pointer;
-			border-radius: 0.5rem;
-			z-index: 1001;
-		}
-
-		nav {
-			position: fixed;
-			top: -50px;
-			right: -250px; 
-			width: 250px;
-			height: 100vh;
-			background-color: #ffe0b2;
-			box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
-			display: flex;
-			flex-direction: column;
-			padding-top: 0rem;
-			transition: right 0.4s ease;
-			z-index: 1000;
-		}
-
-		nav.open {
-			right: 0; 
-		}
-
-		nav a {
-			color: #333;
-			text-decoration: none;
-			padding: 1rem;
-			border-bottom: 1px solid #ffcc80;
-			font-size: 1.1rem;
-			transition: background 0.3s;
-		}
-
-		nav a:hover {
-			background-color: #ffcc80;
-		}
-
-		.overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background: rgba(0, 0, 0, 0.4);
-			display: none;
-			z-index: 999;
-		}
-
-		.overlay.active {
-			display: block;
-		}
-	</style>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			const toggleBtn = document.querySelector(".menu-toggle");
-			const nav = document.querySelector("nav");
-			const overlay = document.querySelector(".overlay");
-
-			toggleBtn.addEventListener("click", () => {
-				nav.classList.toggle("open");
-				overlay.classList.toggle("active");
-			});
-
-			overlay.addEventListener("click", () => {
-				nav.classList.remove("open");
-				overlay.classList.remove("active");
-			});
-		});
-	</script>
-
-	<script src="js/loader.js" defer></script>
-	<script src="js/animacionesInicio.js" defer></script>
-	<script src="js/menuInteractivo.js" defer></script>
+  <!-- Scripts -->
+  <script src="js/loader.js" defer></script>
+  <script src="js/animacionesInicio.js" defer></script>
+  <script src="js/index.js" defer></script>
 </head>
-
 <body>
-	<div id="loader">
-		<div class="spinner"><span class="paw">🐾</span></div>
-	</div>
+  <!-- Pantalla de carga -->
+  <div id="loader">
+    <div class="spinner"><span class="paw">🐾</span></div>
+  </div>
 
-	<header>
-		<h1>🏠 Inicio</h1>
-	</header>
+  <!-- Encabezado -->
+  <header>
+    <h1>🏠 Inicio | El banquete de las bestias</h1>
+  </header>
 
-	<!-- Botón hamburguesa -->
-	<button class="menu-toggle">☰</button>
+  <!-- Botón hamburguesa -->
+  <button id="menu-toggle">☰</button>
 
-	<!-- Fondo oscuro -->
-	<div class="overlay"></div>
+  <!-- Fondo oscuro -->
+  <div class="overlay" id="overlay"></div>
 
-	<!-- Menú lateral -->
-	<nav>
-		<a href="index.html">🏠 Inicio</a>
-		<a href="carga.html">📤 Carga</a>
-		<a href="opciones.html">⚙️ Opciones</a>
-	</nav>
+  <!-- Menú lateral -->
+  <nav id="menu">
+    <a href="index.html">🏠 Inicio</a>
+    <a href="carga.html">📤 Carga</a>
+    <a href="opciones.html">⚙️ Opciones</a>
+  </nav>
 
-	<main>
-		<h2>¡Hola!</h2>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima explicabo officia iusto nesciunt inventore. Doloremque, soluta optio ipsam reprehenderit alias laudantium iusto facere quisquam dolorum temporibus maiores unde deleniti inventore.</p>
-	</main>
+  <!-- Contenido principal -->
+  <main>
+    <h2>¡Hola!</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Minima explicabo officia iusto nesciunt inventore. Doloremque, 
+      soluta optio ipsam reprehenderit alias laudantium iusto facere 
+      quisquam dolorum temporibus maiores unde deleniti inventore.
+    </p>
+  </main>
 </body>
 </html>
