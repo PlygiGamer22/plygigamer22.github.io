@@ -67,8 +67,20 @@ main {
   background: #ff9800;
   color: #fff;
 }
+#menu a.active-link {
+  background: #ff9800;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.12);
+  pointer-events: none;
+  cursor: default;
+}
+body.modo-oscuro #menu a.active-link {
+  background: #ff9800;
+  color: #232323;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.18);
+}
 
-/* Botón close/X comparte posición y tamaño con el toggle */
+/* Botón hamburguesa y botón X siempre visibles según estado */
 #menu-toggle,
 #menu-close {
   position: fixed;
@@ -97,12 +109,11 @@ main {
   outline: none;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
-
-/* Mostrar la X solo cuando el menú está abierto (móvil) */
 #menu-close { display: none; z-index: 3002; position: absolute; }
 #menu.active #menu-close { display: flex; }
+#menu.active ~ #menu-toggle { display: none; }
 
-/* Overlay móvil */
+/* Overlay siempre visible cuando el menú está abierto */
 #overlay {
   position: fixed;
   top: 0; left: 0;
@@ -113,44 +124,6 @@ main {
   transition: opacity 0.2s;
 }
 #overlay.active { opacity: 1; pointer-events: all; }
-
-/* === VERSIÓN ESCRITORIO: menú horizontal fijo bajo el header === */
-@media (min-width: 769px) {
-  /* menú se convierte en barra horizontal */
-  #menu {
-    position: static;
-    left: auto;
-    top: auto;
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    background: #ffe0b2;
-    box-shadow: none;
-    border-radius: 0;
-    flex-direction: row;
-    align-items: center;
-    padding: 0.4rem 1rem;
-    overflow: visible;
-  }
-  #menu.active { left: auto; }
-  #menu ul {
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-    gap: 0.4rem;
-    align-items: center;
-  }
-  #menu li { margin: 0; }
-  #menu a {
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-  }
-  /* ocultar overlay y botón close en escritorio */
-  #overlay { display: none !important; }
-  #menu-close { display: none !important; position: absolute; }
-  /* el toggle hamburguesa no se muestra en escritorio */
-  #menu-toggle { display: none !important; }
-}
 
 /* === MODO OSCURO === */
 body.modo-oscuro {
