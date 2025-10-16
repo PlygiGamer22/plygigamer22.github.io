@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>El banquete de las bestias</title>
 	<link rel="stylesheet" href="css/inicio.css">
+
 	<style>
+		/* === LOADER === */
 		#loader {
 			position: fixed;
 			top: 0;
@@ -43,29 +45,108 @@
 			0% { transform: rotate(0deg); }
 			100% { transform: rotate(360deg); }
 		}
+
+		/* === ESTILOS GENERALES === */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			background-color: #fff7ed;
+		}
+
+		header {
+			background-color: #ff9800;
+			color: white;
+			padding: 1rem;
+			text-align: center;
+		}
+
+		/* === MENÚ PLEGABLE === */
+		nav {
+			background-color: #ffe0b2;
+			overflow: hidden;
+			transition: max-height 0.3s ease-out;
+		}
+
+		nav a {
+			display: block;
+			color: #333;
+			text-decoration: none;
+			padding: 1rem;
+			border-bottom: 1px solid #ffcc80;
+		}
+
+		nav a:hover {
+			background-color: #ffcc80;
+		}
+
+		/* Botón hamburguesa */
+		.menu-toggle {
+			background: #ff9800;
+			border: none;
+			color: white;
+			font-size: 1.8rem;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+			display: none;
+			width: 100%;
+			text-align: left;
+		}
+
+		/* Para móviles */
+		@media (max-width: 768px) {
+			nav {
+				max-height: 0;
+			}
+			nav.open {
+				max-height: 300px; /* altura suficiente para mostrar los enlaces */
+			}
+			.menu-toggle {
+				display: block;
+			}
+		}
+
+		main {
+			padding: 1rem;
+		}
 	</style>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const toggleBtn = document.querySelector(".menu-toggle");
+			const nav = document.querySelector("nav");
+			toggleBtn.addEventListener("click", () => {
+				nav.classList.toggle("open");
+			});
+		});
+	</script>
+
 	<script src="js/loader.js" defer></script>
 	<script src="js/animacionesInicio.js" defer></script>
 	<script src="js/menuInteractivo.js" defer></script>
 </head>
+
 <body>
 	<div id="loader">
-	<div class="spinner"><span class="paw">🐾</span></div>
+		<div class="spinner"><span class="paw">🐾</span></div>
 	</div>
+
 	<header>
-	<h1>🐾 Bienvenido a El banquete de las bestias</h1>
+		<h1>🐾 Bienvenido a El banquete de las bestias</h1>
 	</header>
+
+	<!-- Botón hamburguesa -->
+	<button class="menu-toggle">☰ Menú</button>
+
+	<!-- Menú plegable -->
 	<nav>
-	<a href="index.html">🏠 Inicio</a>
-	<a href="carga.html">📤 Carga</a>
-	<a href="opciones.html">⚙️ Opciones</a>
+		<a href="index.html">🏠 Inicio</a>
+		<a href="carga.html">📤 Carga</a>
+		<a href="opciones.html">⚙️ Opciones</a>
 	</nav>
+
 	<main>
 		<h2>¡Hola!</h2>
 		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima explicabo officia iusto nesciunt inventore. Doloremque, soluta optio ipsam reprehenderit alias laudantium iusto facere quisquam dolorum temporibus maiores unde deleniti inventore.</p>
-
 	</main>
 </body>
 </html>
-
-
