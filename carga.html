@@ -1,26 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carga | El banquete de las bestias</title>
-    <link rel="stylesheet" href="css/inicio.css">
-    <script src="js/animacionesCarga.js" defer></script>
-    <script src="js/menuInteractivo.js" defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carga | El banquete de las bestias</title>
+	<link rel="stylesheet" href="css/inicio.css">
+
+	<style>
+		/* === ESTILOS GENERALES === */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			background-color: #fff7ed;
+			overflow-x: hidden;
+		}
+
+		header {
+			background-color: #ff9800;
+			color: white;
+			padding: 1rem;
+			text-align: center;
+		}
+
+		main {
+			padding: 1rem;
+		}
+
+		/* === BOTÓN MENÚ === */
+		.menu-toggle {
+			position: fixed;
+			top: 1rem;
+			right: 1rem;
+			background: #ff9800;
+			border: none;
+			color: white;
+			font-size: 2rem;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+			border-radius: 0.5rem;
+			z-index: 1001;
+			display: none; /* Oculto por defecto en pantallas grandes */
+		}
+
+		/* === MENÚ DESLIZANTE (para móviles) === */
+		nav {
+			position: fixed;
+			top: 0;
+			right: -250px;
+			width: 250px;
+			height: 100vh;
+			background-color: #ffe0b2;
+			box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding-top: 0;
+			transition: right 0.4s ease;
+			z-index: 1000;
+		}
+
+		nav.open {
+			right: 0;
+		}
+
+		nav a {
+			color: #333;
+			text-decoration: none;
+			padding: 1rem;
+			border-bottom: 1px solid #ffcc80;
+			font-size: 1.1rem;
+			width: 100%;
+			transition: background 0.3s;
+		}
+
+		nav a:hover {
+			background-color: #ffcc80;
+		}
+
+		/* === FONDO OSCURO === */
+		.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0, 0, 0, 0.4);
+			display: none;
+			z-index: 999;
+		}
+
+		.overlay.active {
+			display: block;
+		}
+
+		/* === VERSIÓN DE ESCRITORIO === */
+		@media (min-width: 769px) {
+			.menu-toggle {
+				display: none; /* No se muestra en escritorio */
+			}
+
+			.overlay {
+				display: none !important;
+			}
+
+			nav {
+				position: static;
+				height: auto;
+				width: 100%;
+				box-shadow: none;
+				background-color: #ffe0b2;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				transition: none;
+				right: auto;
+			}
+
+			nav a {
+				border: none;
+				padding: 1rem 2rem;
+				width: auto;
+				font-size: 1rem;
+			}
+
+			nav a:hover {
+				background-color: #ffcc80;
+			}
+		}
+
+		/* === VERSIÓN MÓVIL === */
+		@media (max-width: 768px) {
+			.menu-toggle {
+				display: block;
+			}
+		}
+	</style>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const toggleBtn = document.querySelector(".menu-toggle");
+			const nav = document.querySelector("nav");
+			const overlay = document.querySelector(".overlay");
+
+			toggleBtn.addEventListener("click", () => {
+				nav.classList.toggle("open");
+				overlay.classList.toggle("active");
+			});
+
+			overlay.addEventListener("click", () => {
+				nav.classList.remove("open");
+				overlay.classList.remove("active");
+			});
+		});
+	</script>
+
+	<script src="js/animacionesCarga.js" defer></script>
+	<script src="js/menuInteractivo.js" defer></script>
 </head>
+
 <body>
-    <header>
-    <h1>🐾 Carga | El banquete de las bestias</h1>
-    </header>
-    <nav>
-        <a href="index.html">🏠 Inicio</a>
-        <a href="carga.html">📤 Carga</a>
-        <a href="opciones.html">⚙️ Opciones</a>
-    </nav>
-    <main>
-        <h2>Sección de Carga</h2>
-        <p>Aquí podrás cargar datos o imágenes de tus mascotas.</p>
-    </main>
+	<header>
+		<h1>🐾 Carga | El banquete de las bestias</h1>
+	</header>
+
+	<!-- Botón hamburguesa (solo visible en móviles) -->
+	<button class="menu-toggle">☰</button>
+
+	<!-- Fondo oscuro -->
+	<div class="overlay"></div>
+
+	<!-- Menú -->
+	<nav>
+		<a href="index.html">🏠 Inicio</a>
+		<a href="carga.html">📤 Carga</a>
+		<a href="opciones.html">⚙️ Opciones</a>
+	</nav>
+
+	<main>
+		<h2>Sección de Carga</h2>
+		<p>Aquí podrás cargar datos o imágenes de tus mascotas.</p>
+	</main>
 </body>
 </html>
-
