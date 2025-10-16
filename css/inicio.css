@@ -4,7 +4,7 @@ body {
   margin: 0;
   background: linear-gradient(120deg, #fff7ed 60%, #ffe0b2 100%);
   min-height: 100vh;
-  overflow-x: hidden;
+  background-attachment: fixed;
 }
 
 header {
@@ -30,6 +30,9 @@ header {
 
 main {
   padding: 1rem;
+  min-height: 100vh;
+  background: transparent;
+  box-sizing: border-box;
 }
 
 /* === MENÚ: comportamiento unificado === */
@@ -231,6 +234,15 @@ body.modo-oscuro .spinner {
 
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
+  body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #fff7ed 60%, #ffe0b2 100%);
+    background-attachment: fixed;
+  }
+  main {
+    min-height: 100vh;
+    background: transparent;
+  }
   #menu {
     width: 90vw;
     min-width: 160px;
