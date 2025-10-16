@@ -23,16 +23,19 @@
   </header>
 
   <!-- Botón hamburguesa -->
-  <button id="menu-toggle">☰</button>
+  <button id="menu-toggle" aria-label="Abrir menú" tabindex="0">☰</button>
 
   <!-- Fondo oscuro -->
-  <div class="overlay" id="overlay"></div>
+  <div id="overlay"></div>
 
   <!-- Menú lateral -->
-  <nav id="menu">
-    <a href="index.html">🏠 Inicio</a>
-    <a href="carga.html">📤 Carga</a>
-    <a href="opciones.html">⚙️ Opciones</a>
+  <nav id="menu" aria-label="Menú lateral">
+    <button id="menu-close" aria-label="Cerrar menú" tabindex="0">&times;</button>
+    <ul>
+      <li><a href="index.html" class="active-link">🏠 Inicio</a></li>
+      <li><a href="carga.html">📤 Carga</a></li>
+      <li><a href="opciones.html">⚙️ Opciones</a></li>
+    </ul>
   </nav>
 
   <!-- Contenido principal -->

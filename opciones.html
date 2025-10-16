@@ -6,21 +6,93 @@
     <title>Opciones | El banquete de las bestias</title>
     <link rel="stylesheet" href="css/inicio.css">
     <script src="js/animacionesOpciones.js" defer></script>
-    <script src="js/menuInteractivo.js" defer></script>
+    <script src="js/index.js" defer></script>
 </head>
 <body>
     <header>
         <h1>🐾 Opciones | El banquete de las bestias</h1>
     </header>
-    <nav>
-        <a href="index.html">🏠 Inicio</a>
-        <a href="carga.html">📤 Carga</a>
-        <a href="opciones.html">⚙️ Opciones</a>
+
+    <!-- Botón hamburguesa -->
+    <button id="menu-toggle" aria-label="Abrir menú" tabindex="0">☰</button>
+
+    <!-- Fondo oscuro -->
+    <div id="overlay"></div>
+
+    <!-- Menú lateral -->
+    <nav id="menu" aria-label="Menú lateral">
+        <button id="menu-close" aria-label="Cerrar menú" tabindex="0">&times;</button>
+        <ul>
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="carga.html">📤 Carga</a></li>
+            <li><a href="opciones.html" class="active-link">⚙️ Opciones</a></li>
+        </ul>
     </nav>
+
     <main>
         <h2>Sección de Opciones</h2>
         <p>Aquí podrás modificar configuraciones y preferencias.</p>
+        <form class="opciones-lista">
+            <div class="opcion-item">
+                <label class="switch">
+                    <input type="checkbox" id="opcion1">
+                    <span class="slider"></span>
+                </label>
+                <span class="opcion-titulo">Modo oscuro</span>
+            </div>
+            <div class="opcion-item">
+                <label class="switch">
+                    <input type="checkbox" id="opcion2">
+                    <span class="slider"></span>
+                </label>
+                <span class="opcion-titulo">Notificaciones</span>
+            </div>
+            <div class="opcion-item">
+                <label class="switch">
+                    <input type="checkbox" id="opcion3">
+                    <span class="slider"></span>
+                </label>
+                <span class="opcion-titulo">Sonido</span>
+            </div>
+            <div class="opcion-item">
+                <label class="switch">
+                    <input type="checkbox" id="opcion4">
+                    <span class="slider"></span>
+                </label>
+                <span class="opcion-titulo">Animaciones</span>
+            </div>
+            <div class="opcion-item">
+                <label class="switch">
+                    <input type="checkbox" id="opcion5">
+                    <span class="slider"></span>
+                </label>
+                <span class="opcion-titulo">Guardar progreso</span>
+            </div>
+        </form>
     </main>
+    <script>
+      // Modo oscuro persistente con localStorage
+      document.addEventListener("DOMContentLoaded", () => {
+        const darkSwitch = document.getElementById("opcion1");
+        // Aplica el modo oscuro si está guardado
+        if (localStorage.getItem("modoOscuro") === "true") {
+          document.body.classList.add("modo-oscuro");
+          if (darkSwitch) darkSwitch.checked = true;
+        }
+        // Cambia y guarda el estado al interactuar
+        if (darkSwitch) {
+          darkSwitch.addEventListener("change", function() {
+            if (this.checked) {
+              document.body.classList.add("modo-oscuro");
+              localStorage.setItem("modoOscuro", "true");
+            } else {
+              document.body.classList.remove("modo-oscuro");
+              localStorage.setItem("modoOscuro", "false");
+            }
+          });
+        }
+      });
+    </script>
 </body>
 </html>
 

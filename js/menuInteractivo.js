@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!menu || !toggle) return;
 
   toggle.addEventListener("click", () => {
-    menu.classList.toggle("show");
+    menu.classList.toggle("active");
   });
 
   // Cerrar menú al hacer clic en un enlace
   menu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
-      menu.classList.remove("show");
+      menu.classList.remove("active");
     });
   });
 });

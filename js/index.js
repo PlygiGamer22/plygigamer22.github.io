@@ -17,21 +17,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.getElementById("menu");
   const toggle = document.getElementById("menu-toggle");
   const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("menu-close");
 
-  if (!menu || !toggle || !overlay) return;
+  if (!menu || !toggle || !overlay || !closeBtn) return;
 
-  // Función para abrir/cerrar el menú
-  const toggleMenu = () => {
-    const isOpen = menu.classList.toggle("show");
-    overlay.classList.toggle("show", isOpen);
-  };
+  // Abrir menú
+  toggle.addEventListener("click", () => {
+    menu.classList.add("active");
+    overlay.classList.add("active");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.style.display = "none"; // Oculta el botón
+  });
 
-  // Abrir/cerrar con el botón
-  toggle.addEventListener("click", toggleMenu);
+  // Cerrar menú al hacer clic en overlay
+  overlay.addEventListener("click", closeMenu);
 
-  // Cerrar al hacer clic fuera o en un enlace
-  overlay.addEventListener("click", toggleMenu);
-  menu.querySelectorAll("a").forEach(link =>
-    link.addEventListener("click", toggleMenu)
-  );
+  // Cerrar menú al hacer clic en un enlace
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Cerrar menú al hacer clic en el botón X
+  closeBtn.addEventListener("click", closeMenu);
+
+  // Opcional: cerrar menú con tecla ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  function closeMenu() {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.style.display = ""; // Muestra el botón
+  }
+});
+
+// === MODO OSCURO GLOBAL ===
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("modoOscuro") === "true") {
+    document.body.classList.add("modo-oscuro");
+  }
 });

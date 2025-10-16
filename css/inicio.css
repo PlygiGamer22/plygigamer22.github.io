@@ -17,68 +17,186 @@ main {
   padding: 1rem;
 }
 
-/* === BOTÓN MENÚ === */
-#menu-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #ff9800;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  z-index: 2001;
-}
-
-/* === MENÚ LATERAL === */
-nav {
+/* === MENÚ: comportamiento unificado === */
+/* Por defecto (móvil): menú deslizable desde la izquierda */
+#menu {
   position: fixed;
   top: 0;
-  right: -250px;
-  width: 250px;
+  left: -260px;
+  width: 260px;
   height: 100vh;
-  background-color: #ffe0b2;
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe0b2 80%, #ff9800 100%);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+  transition: left 0.3s cubic-bezier(.77,0,.18,1);
+  z-index: 2500;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 18px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
-  transition: right 0.4s ease;
-  z-index: 2000;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
+#menu.active { left: 0; }
 
-nav.show {
-  right: 0;
+#menu ul {
+  list-style: none;
+  margin: 70px 0 0 0; /* espacio para X */
+  padding: 0 0 24px 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
 }
-
-nav a {
+#menu li { margin-bottom: 1.2rem; }
+#menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   color: #333;
   text-decoration: none;
-  padding: 1rem;
-  border-bottom: 1px solid #ffcc80;
-  font-size: 1.1rem;
-  transition: background 0.3s;
+  padding: 1.2rem 2rem 1.2rem 2.8rem;
+  font-size: 1.18rem;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+#menu a:hover, #menu a:focus {
+  background: #ff9800;
+  color: #fff;
 }
 
-nav a:hover {
-  background-color: #ffcc80;
-}
-
-/* === OVERLAY === */
-.overlay {
+/* Botón close/X comparte posición y tamaño con el toggle */
+#menu-toggle,
+#menu-close {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  display: none;
-  z-index: 1500;
+  top: 18px;
+  left: 18px;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  color: #ff9800;
+  border: none;
+  font-size: 2.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 3001;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+#menu-toggle:hover, #menu-toggle:focus,
+#menu-close:hover, #menu-close:focus {
+  background: #ff9800;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
 
-.overlay.show {
-  display: block;
+/* Mostrar la X solo cuando el menú está abierto (móvil) */
+#menu-close { display: none; z-index: 3002; position: absolute; }
+#menu.active #menu-close { display: flex; }
+
+/* Overlay móvil */
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.32);
+  opacity: 0; pointer-events: none;
+  z-index: 2000;
+  transition: opacity 0.2s;
+}
+#overlay.active { opacity: 1; pointer-events: all; }
+
+/* === VERSIÓN ESCRITORIO: menú horizontal fijo bajo el header === */
+@media (min-width: 769px) {
+  /* menú se convierte en barra horizontal */
+  #menu {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    background: #ffe0b2;
+    box-shadow: none;
+    border-radius: 0;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    overflow: visible;
+  }
+  #menu.active { left: auto; }
+  #menu ul {
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  #menu li { margin: 0; }
+  #menu a {
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+  }
+  /* ocultar overlay y botón close en escritorio */
+  #overlay { display: none !important; }
+  #menu-close { display: none !important; position: absolute; }
+  /* el toggle hamburguesa no se muestra en escritorio */
+  #menu-toggle { display: none !important; }
+}
+
+/* === MODO OSCURO === */
+body.modo-oscuro {
+  background-color: #232323;
+  color: #f5f5f5;
+}
+body.modo-oscuro header {
+  background-color: #333;
+  color: #ff9800;
+}
+body.modo-oscuro main {
+  background: #232323;
+  color: #f5f5f5;
+}
+body.modo-oscuro #menu {
+  background: linear-gradient(135deg, #333 80%, #232323 100%);
+  color: #ff9800;
+}
+body.modo-oscuro #menu a {
+  color: #ff9800;
+}
+body.modo-oscuro #menu a:hover, 
+body.modo-oscuro #menu a:focus {
+  background: #ff9800;
+  color: #232323;
+}
+body.modo-oscuro #menu-close,
+body.modo-oscuro #menu-toggle {
+  background: #333;
+  color: #ff9800;
+}
+body.modo-oscuro .opcion-item {
+  background: #333;
+}
+body.modo-oscuro .opcion-titulo {
+  color: #ff9800;
+}
+body.modo-oscuro .slider {
+  background: #555;
+}
+body.modo-oscuro .switch input:checked + .slider {
+  background: #ff9800;
+}
+body.modo-oscuro .spinner {
+  border: 8px solid #333;
+  border-top: 8px solid #ff9800;
 }
 
 /* === LOADER === */
@@ -125,11 +243,120 @@ nav a:hover {
 
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
-  nav {
-    width: 200px;
+  #menu {
+    width: 90vw;
+    min-width: 160px;
+    left: -90vw;
+    border-radius: 0 18px 18px 0;
+    height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto;
   }
-  #menu-toggle {
+  #menu.active {
+    left: 0;
+  }
+  #menu ul {
+    margin-top: 60px;
+  }
+  #menu-toggle,
+  #menu-close {
+    top: 12px;
+    left: 12px;
+    width: 38px;
+    height: 38px;
     font-size: 1.8rem;
-    padding: 0.4rem 0.8rem;
   }
+  header {
+    font-size: 1.1rem;
+    padding-top: 56px;
+  }
+  main {
+    padding: 16px;
+  }
+}
+
+/* Ocultar botón hamburguesa cuando el menú está abierto */
+#overlay.active ~ #menu-toggle {
+  display: none;
+}
+
+/* Alternativamente, usando solo el menú */
+#menu.active + #menu-toggle {
+  display: none;
+}
+
+/* Opciones selectivas estilo switch */
+.opciones-lista {
+  margin: 2rem auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.opcion-item {
+  display: flex;
+  align-items: center;
+  background: #ffe0b2;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.08);
+  padding: 0.8rem 1.2rem;
+  gap: 1.2rem;
+  transition: background 0.2s;
+}
+
+.opcion-item:hover {
+  background: #ffecb3;
+}
+
+.opcion-titulo {
+  font-size: 1.1rem;
+  color: #ff9800;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Switch estilo slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #ffcc80;
+  border-radius: 28px;
+  transition: background 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(255,152,0,0.15);
+  transition: transform 0.3s;
+}
+
+.switch input:checked + .slider {
+  background: #ff9800;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+  background: #fff7ed;
 }
