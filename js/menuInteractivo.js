@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("show");
   });
 
-
+  // Cerrar menú al hacer clic en un enlace
   menu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       menu.classList.remove("show");
