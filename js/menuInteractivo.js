@@ -1,10 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-	const navLinks = document.querySelectorAll('nav a');
-	const currentPath = window.location.pathname;
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.getElementById("menu");
+  const toggle = document.getElementById("menu-toggle");
 
-	navLinks.forEach(link => {
-		if (link.getAttribute('href') === currentPath.split('/').pop()) {
-			link.classList.add('active');
-		}
-	});
+  if (!menu || !toggle) return;
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+
+
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("show");
+    });
+  });
 });
