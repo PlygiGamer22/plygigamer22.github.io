@@ -20,14 +20,13 @@
   <!-- Encabezado -->
   <header>
     <h1>🏠 Inicio | El banquete de las bestias</h1>
+    <p class="subtitulo">Bienvenido a tu espacio de mascotas</p>
   </header>
 
   <!-- Botón hamburguesa -->
   <button id="menu-toggle" aria-label="Abrir menú" tabindex="0">☰</button>
-
   <!-- Fondo oscuro -->
   <div id="overlay"></div>
-
   <!-- Menú lateral -->
   <nav id="menu" aria-label="Menú lateral">
     <button id="menu-close" aria-label="Cerrar menú" tabindex="0">&times;</button>
@@ -40,13 +39,34 @@
 
   <!-- Contenido principal -->
   <main>
-    <h2>¡Hola!</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-      Minima explicabo officia iusto nesciunt inventore. Doloremque, 
-      soluta optio ipsam reprehenderit alias laudantium iusto facere 
-      quisquam dolorum temporibus maiores unde deleniti inventore.
-    </p>
+    <section class="presentacion">
+      <h2 class="fade-in">¡Descubre el mundo de tus mascotas!</h2>
+      <p class="fade-in-delay">Comparte, organiza y disfruta de tus mejores momentos.</p>
+    </section>
+    <section class="galeria-imagenes">
+      <div class="imagen-card slide-up">
+        <img src="img/mascota1.jpg" alt="Mascota 1">
+        <span>Mascota 1</span>
+      </div>
+      <div class="imagen-card slide-up" style="animation-delay:0.2s;">
+        <img src="img/mascota2.jpg" alt="Mascota 2">
+        <span>Mascota 2</span>
+      </div>
+      <div class="imagen-card slide-up" style="animation-delay:0.4s;">
+        <img src="img/mascota3.jpg" alt="Mascota 3">
+        <span>Mascota 3</span>
+      </div>
+    </section>
+    <!-- Relleno scroll animado -->
+    <section class="scroll-relleno">
+      <div class="scroll-item anim-scroll">¿Sabías que las mascotas mejoran tu salud emocional?</div>
+      <div class="scroll-item anim-scroll">Comparte fotos y momentos únicos con tu comunidad.</div>
+      <div class="scroll-item anim-scroll">Organiza la información y recuerdos de tus mascotas fácilmente.</div>
+      <div class="scroll-item anim-scroll">¡Explora consejos y curiosidades sobre el cuidado animal!</div>
+      <div class="scroll-item anim-scroll">Sigue bajando para descubrir más sorpresas...</div>
+      <div class="scroll-item anim-scroll">¡Gracias por ser parte de El banquete de las bestias!</div>
+    </section>
+    <div style="height: 200px;"></div> <!-- Espacio extra para scroll -->
   </main>
 </body>
 </html>

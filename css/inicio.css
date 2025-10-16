@@ -2,15 +2,30 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background-color: #fff7ed;
+  background: linear-gradient(120deg, #fff7ed 60%, #ffe0b2 100%);
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
 header {
   background-color: #ff9800;
   color: white;
-  padding: 1rem;
+  padding: 2.5rem 1rem 1.2rem 1rem;
   text-align: center;
+  box-shadow: 0 4px 24px rgba(255,152,0,0.10);
+  /* Elimina el degradado, bordes y sombra */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  color: #fff7ed;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(255,152,0,0.10);
 }
 
 main {
@@ -332,4 +347,242 @@ body.modo-oscuro .spinner {
 .switch input:checked + .slider:before {
   transform: translateX(20px);
   background: #fff7ed;
+}
+
+/* Batería visual vertical con forma real */
+.bateria-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+  width: 100px;
+  gap: 1rem;
+}
+
+.bateria {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  height: 260px;
+  border: 5px solid #888;
+  border-radius: 18px 18px 28px 28px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10), inset 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 0.7rem;
+}
+
+/* Terminal superior de la batería */
+.bateria::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 16px;
+  width: 28px;
+  height: 12px;
+  background: #888;
+  border-radius: 6px 6px 10px 10px;
+  border: 2px solid #fff;
+  z-index: 2;
+}
+
+/* Terminal inferior de la batería */
+.bateria::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: -24px;
+  width: 32px;
+  height: 16px;
+  background: #888;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  z-index: 2;
+}
+
+.bateria-seccion {
+  flex: 1 1 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+/* Estados de batería */
+.bateria-full { background: #43a047; }
+.bateria-media { background: #ffd600; }
+.bateria-baja { background: #e53935; }
+
+/* Línea de estado */
+.bateria-estado-label {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #43a047;
+  margin-top: 0.5rem;
+  border-bottom: 3px solid #43a047;
+  padding-bottom: 0.2rem;
+}
+
+.bateria-media-estado .bateria-estado-label,
+.bateria-media-estado .bateria-seccion {
+  color: #ff9800;
+  border-bottom-color: #ff9800;
+}
+.bateria-media-estado .bateria-seccion {
+  background: #ffd600;
+}
+
+.bateria-baja-estado .bateria-estado-label,
+.bateria-baja-estado .bateria-seccion {
+  color: #e53935;
+  border-bottom-color: #e53935;
+}
+.bateria-baja-estado .bateria-seccion {
+  background: #e53935;
+}
+
+/* Presentación */
+.presentacion {
+  margin: 3rem auto 2rem auto;
+  text-align: center;
+  max-width: 600px;
+}
+.presentacion h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  background: linear-gradient(90deg, #ff9800 60%, #ffb300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.presentacion p {
+  font-size: 1.18rem;
+  color: #ff9800;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Galería de imágenes */
+.galeria-imagenes {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 2.5rem auto;
+  flex-wrap: wrap;
+}
+.imagen-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(255,152,0,0.13);
+  padding: 1.2rem 1.2rem 0.7rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: slideUp 0.8s cubic-bezier(.77,0,.18,1) both;
+  border: 2px solid #ffe0b2;
+}
+.imagen-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 16px 48px rgba(255,152,0,0.18);
+  border-color: #ff9800;
+}
+.imagen-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 4px 16px rgba(255,152,0,0.10);
+  border: 2px solid #ffe0b2;
+  background: #fff7ed;
+}
+.imagen-card span {
+  font-size: 1.1rem;
+  color: #ff9800;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Relleno scroll animado */
+.scroll-relleno {
+  margin: 3rem auto 2rem auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.scroll-item {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  background: linear-gradient(90deg, #fffbe9 70%, #ffe0b2 100%);
+  color: #ff9800;
+  font-size: 1.18rem;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 1.3rem 1.7rem;
+  box-shadow: 0 4px 24px rgba(255,152,0,0.10);
+  border: 2px solid #ffe0b2;
+  transition: opacity 0.8s, transform 0.8s;
+  will-change: opacity, transform;
+  letter-spacing: 0.5px;
+}
+
+/* Cuando el elemento está visible */
+.scroll-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 8px 32px rgba(255,152,0,0.14);
+  border-color: #ff9800;
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1.5s 0.3s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(60px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .galeria-imagenes {
+    gap: 1.2rem;
+  }
+  .imagen-card {
+    width: 140px;
+    padding: 0.7rem 0.7rem 0.3rem 0.7rem;
+  }
+  .imagen-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    padding: 1.5rem 0.5rem 0.7rem 0.5rem;
+  }
+  .presentacion h2 { font-size: 1.3rem; }
+  .galeria-imagenes { flex-direction: column; align-items: center; }
+  .imagen-card { width: 90vw; }
+  .scroll-relleno { gap: 1.2rem; }
 }

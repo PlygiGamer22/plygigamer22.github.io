@@ -32,6 +32,24 @@
 	<main>
 		<h2>Sección de Carga</h2>
 		<p>Aquí podrás cargar datos o imágenes de tus mascotas.</p>
+
+		<!-- Batería visual: solo una visible a la vez -->
+		<div class="bateria-container">
+			<!-- FULL -->
+			<div class="bateria bateria-full-estado">
+				<div class="bateria-seccion bateria-full"></div>
+			</div>
+			<!-- MEDIA (oculta por defecto) -->
+			<div class="bateria bateria-media-estado" style="display:none;">
+				<div class="bateria-seccion bateria-media"></div>
+			</div>
+			<!-- BAJA (oculta por defecto) -->
+			<div class="bateria bateria-baja-estado" style="display:none;">
+				<div class="bateria-seccion bateria-baja"></div>
+			</div>
+			<!-- Línea de estado -->
+			<div class="bateria-estado-label">Batería: FULL</div>
+		</div>
 	</main>
 </body>
 </html>

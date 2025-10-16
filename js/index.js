@@ -59,3 +59,53 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("modo-oscuro");
   }
 });
+
+// === Cambiar estado de batería ===
+function setBateriaEstado(estado) {
+  const full = document.querySelector('.bateria-full-estado');
+  const media = document.querySelector('.bateria-media-estado');
+  const baja = document.querySelector('.bateria-baja-estado');
+  const label = document.querySelector('.bateria-estado-label');
+  if (!full || !media || !baja || !label) return;
+
+  full.style.display = 'none';
+  media.style.display = 'none';
+  baja.style.display = 'none';
+
+  if (estado === 'full') {
+    full.style.display = '';
+    label.textContent = 'Batería: FULL';
+    label.style.color = '#43a047';
+    label.style.borderBottomColor = '#43a047';
+  } else if (estado === 'media') {
+    media.style.display = '';
+    label.textContent = 'Batería: MEDIA';
+    label.style.color = '#ff9800';
+    label.style.borderBottomColor = '#ff9800';
+  } else if (estado === 'baja') {
+    baja.style.display = '';
+    label.textContent = 'Batería: BAJA';
+    label.style.color = '#e53935';
+    label.style.borderBottomColor = '#e53935';
+  }
+}
+
+// Ejemplo de uso:
+// setBateriaEstado('media');
+// setBateriaEstado('baja');
+// setBateriaEstado('full');
+
+// === Animación de aparición al hacer scroll ===
+document.addEventListener('DOMContentLoaded', () => {
+  const animItems = document.querySelectorAll('.anim-scroll');
+  const onScrollAnim = () => {
+    animItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        item.classList.add('visible');
+      }
+    });
+  };
+  window.addEventListener('scroll', onScrollAnim);
+  onScrollAnim();
+});
