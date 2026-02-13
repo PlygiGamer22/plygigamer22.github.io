@@ -1,72 +1,31 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El banquete de las bestias</title>
-  <link rel="stylesheet" href="css/inicio.css">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>San Valentín</title>
+		<link rel="stylesheet" href="css/inicio.css">
+	</head>
+	<body>
+		<main class="card" role="main">
+			<div class="top-image">
+				<div class="heart-wrap" aria-hidden="true">
+					<!-- Inline SVG heart as the 'imagen' en el medio superior -->
+					<svg class="heart" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 21s-7.5-4.35-9.33-7.02C-.18 9.58 3.57 4 8.5 6.1 10.12 7 11 8.5 12 9.5c1-1 1.88-2.5 3.5-3.4C20.43 4 24.18 9.58 21.33 13.98 19.5 16.65 12 21 12 21z"/>
+					</svg>
+				</div>
+			</div>
+			<h1>¿Quieres ser mi San Valentín?</h1>
+			<p class="sub">Elige con el corazón ❤️</p>
 
-  <!-- Scripts -->
-  <script src="js/loader.js" defer></script>
-  <script src="js/animacionesInicio.js" defer></script>
-  <script src="js/index.js" defer></script>
-</head>
-<body>
-  <!-- Pantalla de carga -->
-  <div id="loader">
-    <div class="spinner"><span class="paw">🐾</span></div>
-  </div>
-
-  <!-- Encabezado -->
-  <header>
-    <h1>🏠 Inicio | El banquete de las bestias</h1>
-    <p class="subtitulo">Bienvenido a tu espacio de mascotas</p>
-  </header>
-
-  <!-- Botón hamburguesa -->
-  <button id="menu-toggle" aria-label="Abrir menú" tabindex="0">☰</button>
-  <!-- Fondo oscuro -->
-  <div id="overlay"></div>
-  <!-- Menú lateral -->
-  <nav id="menu" aria-label="Menú lateral">
-    <button id="menu-close" aria-label="Cerrar menú" tabindex="0">&times;</button>
-    <ul>
-      <li><a href="index.html" class="active-link">🏠 Inicio</a></li>
-      <li><a href="carga.html">📤 Carga</a></li>
-      <li><a href="opciones.html">⚙️ Opciones</a></li>
-    </ul>
-  </nav>
-
-  <!-- Contenido principal -->
-  <main>
-    <section class="presentacion">
-      <h2 class="fade-in">¡Descubre el mundo de tus mascotas!</h2>
-      <p class="fade-in-delay">Comparte, organiza y disfruta de tus mejores momentos.</p>
-    </section>
-    <section class="galeria-imagenes">
-      <div class="imagen-card slide-up">
-        <img src="img/mascota1.jpg" alt="Mascota 1">
-        <span>Mascota 1</span>
-      </div>
-      <div class="imagen-card slide-up" style="animation-delay:0.2s;">
-        <img src="img/mascota2.jpg" alt="Mascota 2">
-        <span>Mascota 2</span>
-      </div>
-      <div class="imagen-card slide-up" style="animation-delay:0.4s;">
-        <img src="img/mascota3.jpg" alt="Mascota 3">
-        <span>Mascota 3</span>
-      </div>
-    </section>
-    <!-- Relleno scroll animado -->
-    <section class="scroll-relleno">
-      <div class="scroll-item anim-scroll">¿Sabías que las mascotas mejoran tu salud emocional?</div>
-      <div class="scroll-item anim-scroll">Comparte fotos y momentos únicos con tu comunidad.</div>
-      <div class="scroll-item anim-scroll">Organiza la información y recuerdos de tus mascotas fácilmente.</div>
-      <div class="scroll-item anim-scroll">¡Explora consejos y curiosidades sobre el cuidado animal!</div>
-      <div class="scroll-item anim-scroll">Sigue bajando para descubrir más sorpresas...</div>
-      <div class="scroll-item anim-scroll">¡Gracias por ser parte de El banquete de las bestias!</div>
-    </section>
-    <div style="height: 200px;"></div> <!-- Espacio extra para scroll -->
-  </main>
-</body>
+			<div class="buttons" role="group" aria-label="Respuesta">
+				<button id="btn-si" class="btn btn-si">Obvio sii!</button>
+				<button id="btn-no" class="btn btn-no">No, no quiero</button>
+			</div>
+			<div id="result" aria-live="polite"></div>
+		</main>
+		<script src="js/main.js" defer></script>
+	</body>
 </html>
