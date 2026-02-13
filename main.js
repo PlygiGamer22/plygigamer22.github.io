@@ -21,13 +21,16 @@ document.addEventListener('DOMContentLoaded', function(){
 			let x = (Math.random() * rangeX) - (rangeX / 2);
 			let y = (Math.random() * 120 - 60); // más movimiento vertical
 
-			// Evitar que el botón salga de la vista (especialmente en móviles)
+			// Evitar que el botón salga del área de la tarjeta (.card)
 			const btnRect = btnNo.getBoundingClientRect();
-			const margin = 8; // margen desde los bordes
-			const leftLimit = margin;
-			const rightLimit = window.innerWidth - btnRect.width - margin;
-			const topLimit = margin + window.scrollY;
-			const bottomLimit = window.innerHeight - btnRect.height - margin + window.scrollY;
+			const card = document.querySelector('.card');
+			const cardRect = card.getBoundingClientRect();
+			const margin = 8; // margen desde los bordes de la tarjeta
+			// límites relativos a la tarjeta
+			const leftLimit = cardRect.left + margin;
+			const rightLimit = cardRect.right - btnRect.width - margin;
+			const topLimit = cardRect.top + margin;
+			const bottomLimit = cardRect.bottom - btnRect.height - margin;
 
 			const targetLeft = btnRect.left + x;
 			const targetTop = btnRect.top + y;
@@ -69,9 +72,11 @@ document.addEventListener('DOMContentLoaded', function(){
 					<h2>Tu carta</h2>
 					<p class="sub">Aquí tienes un ejemplo de carta (edítalo desde el editor de código):</p>
 					<div class="carta-contenido">
-						<p>Querido/a Valentín,</p>
-						<p>Desde que te conocí, mi corazón late diferente. Cada día pienso en tu sonrisa y en los momentos que compartimos. Quisiera que este día sea especial para ti.</p>
-						<p>Con cariño,<br>[Tu nombre]</p>
+						<p>Angelyt,</p>
+						<p>Es raro para mi escribir una carta de esta manera, pero, no importa el medio ¿verdad? lo que importa es el sentimiento, lo hago con el mismo amor con el que lo haría normalmente. Con esta carta quiero primero agradecerte por estar en mi vida, por permitirme conocerte cada dia mas y enseñarme a amarte, aunque todo esto es nuevo para mi estoy dispuesto a seguir aprendiendo contigo. Te amo con todo mi corazón, eres mi princesa hermosa y espero cada dia poder hacerte más feliz.</p>
+                        <br>
+                        <p>Le doy gracias a Dios por permitirme conocer a una persona tan maravillosa como tú, por tu sonrisa que me alegra el día, por tu mirada que me enamora cada vez más, por tu voz que me calma y me hace sentir en paz, por tu corazón que es tan puro y lleno de amor. Eres un regalo del cielo y cada día doy gracias por tenerte a mi lado. Te amo montones muasss.</p>
+						<p>Con cariño, Tu bofe </p>
 					</div>
 					<div style="margin-top:12px;">
 						<button id="volver" class="btn btn-no">Volver</button>

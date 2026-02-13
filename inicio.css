@@ -25,6 +25,7 @@ body{
 	backdrop-filter: blur(6px) saturate(120%);
 	max-height: calc(100vh - 40px);
 	overflow:auto;
+	position:relative;
 }
 .top-image{
 	display:flex;
@@ -57,6 +58,7 @@ p.sub{margin:0 0 22px;color:rgba(255,255,255,0.85);font-size:0.95rem}
 	justify-content:center;
 	margin-top:6px;
 	flex-wrap:wrap;
+    position:relative;
 }
 .btn{
 	min-width:120px;
@@ -86,6 +88,14 @@ p.sub{margin:0 0 22px;color:rgba(255,255,255,0.85);font-size:0.95rem}
 	.heart{width:72px;height:72px}
 	.btn{min-width:110px;padding:10px 16px}
 }
+
+/* Reduce negative top offset on small screens so card doesn't clip */
+@media (max-width:520px){
+    .top-image{margin-top:-12px}
+}
+
+/* Ensure transform rendering is smooth for moving button */
+.btn{will-change:transform}
 
 /* Make inner content scrollable and avoid top overflow on small screens */
 @media (max-height:700px){
