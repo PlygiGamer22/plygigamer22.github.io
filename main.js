@@ -69,8 +69,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				const card = document.createElement('div');
 				card.className = 'result';
 				card.innerHTML = `
-					<h2>Tu carta</h2>
-					<p class="sub">Aquí tienes un ejemplo de carta (edítalo desde el editor de código):</p>
+					<h2>Aqui tienes tu carta</h2>
 					<div class="carta-contenido">
 						<p>Angelyt,</p>
 						<p>Es raro para mi escribir una carta de esta manera, pero, no importa el medio ¿verdad? lo que importa es el sentimiento, lo hago con el mismo amor con el que lo haría normalmente. Con esta carta quiero primero agradecerte por estar en mi vida, por permitirme conocerte cada dia mas y enseñarme a amarte, aunque todo esto es nuevo para mi estoy dispuesto a seguir aprendiendo contigo. Te amo con todo mi corazón, eres mi princesa hermosa y espero cada dia poder hacerte más feliz.</p>
